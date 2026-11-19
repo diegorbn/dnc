@@ -1,22 +1,39 @@
 from enum import Enum, auto
 
 class TokenType(Enum):
-    INT = auto()
-    BOOL = auto()
-    MONDONGO = auto()
-    IF = auto()
-    ELSE = auto()
+    """Token categories recognized by the lexer."""
 
-    IDENT = auto()
-    INT_LITERAL = auto()
+    INT = auto()  # int
+    BOOL = auto()  # bool
+    MONDONGO = auto()  # mondongo
+    IF = auto()  # if
+    ELSE = auto()  # else
 
-    PLUS = auto()
-    ASSIGN = auto()
-    SEMICOLON = auto()
+    IDENT = auto()  # Identifier, e.g. count
+    INT_LITERAL = auto()  # Integer literal, e.g. 42
 
-    WHILE = auto()
+    PLUS = auto()  # +
+    ASSIGN = auto()  # =
+    SEMICOLON = auto()  # ;
 
-    PRINT = auto()
+    WHILE = auto()  # while
 
-    TRUE = auto()
-    FALSE = auto()
+    PRINT = auto()  # print
+
+    TRUE = auto()  # true
+    FALSE = auto()  # false
+    MINUS = auto()  # -
+    STAR = auto()  # *
+    SLASH = auto()  # /
+    EQUAL = auto()  # ==
+    NOT_EQUAL = auto()  # !=
+    BANG = auto()  # !
+    LESS = auto()  # <
+    LESS_EQUAL = auto()  # <=
+    GREATER = auto()  # >
+    GREATER_EQUAL = auto()  # >=
+    LEFT_PAREN = auto()  # (
+    RIGHT_PAREN = auto()  # )
+    LEFT_BRACE = auto()  # {
+    RIGHT_BRACE = auto()  # }
+    EOF = auto()  # End of source

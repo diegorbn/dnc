@@ -1,1 +1,10 @@
+# Development agent tasks
 tasks/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
