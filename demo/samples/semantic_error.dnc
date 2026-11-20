@@ -1,0 +1,8 @@
+int mondongo() {
+    int x = 5;
+    {
+        int local = x + 1;
+        print(local);
+    }
+    print(local);
+}

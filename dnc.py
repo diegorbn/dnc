@@ -5,6 +5,8 @@ import sys
 from pathlib import Path
 
 from lexer.dnc_lexer import Lexer
+from parser import Parser, ParserError
+from semantic import SemanticAnalyzer
 
 
 
@@ -23,13 +25,14 @@ def main():
     """Read a UTF-8 source file from the command line and print its tokens."""
     parser = SpanishArgumentParser(
         description="Mostrar los tokens de un archivo fuente DNC.",
-        usage="%(prog)s [-h] archivo",
+        usage="%(prog)s [-h] [--check] archivo",
         add_help=False,
         formatter_class=SpanishHelpFormatter,
     )
     parser._positionals.title = "argumentos posicionales"
     parser._optionals.title = "opciones"
     parser.add_argument("-h", "--help", action="help", help="mostrar esta ayuda y salir")
+    parser.add_argument("--check", action="store_true", help="validar la sintaxis y la semántica")
     parser.add_argument("file", nargs="?", type=Path, metavar="archivo",
                         help="ruta del archivo fuente DNC")
     args, unknown = parser.parse_known_args()
@@ -50,6 +53,16 @@ def main():
         parser.exit(1, f"El archivo {args.file} no contiene texto UTF-8 válido\n")
     except ValueError as error:
         parser.exit(1, f"{error}\n")
+
+    if args.check:
+        try:
+            program = Parser(lexer.get_all_tokens()).parse_program()
+        except ParserError as error:
+            parser.exit(1, f"{error}\n")
+        analyzer = SemanticAnalyzer()
+        if not analyzer.analyze(program):
+            parser.exit(1, "\n".join(str(error) for error in analyzer.errors) + "\n")
+        return
 
     for token in lexer.get_all_tokens():
         print(f"Tipo: {token.type.name}, lexema: {token.lexeme!r}, "

@@ -1,5 +1,8 @@
 # Development agent tasks
-tasks/
+tasks/*
+!tasks/semantic/
+tasks/semantic/*
+!tasks/semantic/SEMANTIC_ANALYZER_ALGORITHM.md
 
 # Python bytecode
 __pycache__/

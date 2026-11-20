@@ -17,6 +17,10 @@ column, followed by an EOF token. An unrecognized character produces an error
 with its location. The lexer recognizes tokens; it does not validate program
 syntax.
 
+To check a complete program's syntax and semantics, run `python3 dnc.py
+--check program.dnc`. Success exits with status 0; errors are reported on
+standard error with status 1. No assembly is generated yet.
+
 To use the lexer from Python, create `Lexer(source)`, call `scan()`, and retrieve
 the stored tokens with `get_all_tokens()`. Alternatively, `advance()` returns
 one token without storing it; a subsequent `scan()` collects the remaining
@@ -37,6 +41,17 @@ lexer = Lexer("int mondongo() { print(5 + 3 * 2); }")
 lexer.scan()
 program = Parser(lexer.get_all_tokens()).parse_program()
 ```
+
+## Semantic analysis
+
+Pass the AST to `SemanticAnalyzer().analyze(program)`. It returns a boolean;
+the analyzer's `errors` list contains location-aware diagnostics on failure.
+Nested blocks permit shadowing, and declarations take effect after their
+initializers. Arithmetic and ordering require integers, `!` and conditions
+require booleans, and equality requires matching types. Assignments and
+initializers require an exact type match; `print` accepts either type. There
+are no implicit conversions or definite-assignment checks. The detailed
+algorithm is described in [SEMANTIC_ANALYZER_ALGORITHM.md](tasks/semantic/SEMANTIC_ANALYZER_ALGORITHM.md).
 
 ## Tests
 
