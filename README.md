@@ -1,3 +1,9 @@
+# Integrantes
+1. Diego Jose Urbina Reyes (00544424)
+2. Kevin Isaac Perez Obando (00544024)
+3. Luis Guillermo Orozco Lazo (00588124)
+4. Daniel Alejandro Melendez Delgado (00078623)
+
 # Definitely Not C (DNC)
 
 **Definitely Not C (DNC)** es un proyecto educativo desarrollado en Python que implementa un analizador para un subconjunto del lenguaje C.
