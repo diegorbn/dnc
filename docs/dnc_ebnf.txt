@@ -1,6 +1,6 @@
 
 (* ======================================= *)
-(* Definitely Not C - Grammar v0.1         *)
+(* Definitely Not C - Grammar v0.2       *)
 (* ======================================= *)
 
 (* Program structure *)

@@ -3,8 +3,8 @@
 Desde la raíz del proyecto, ejecuta:
 
 ```sh
-python -m demo.lexer_demo demo/samples/valid.dnc
-python -m demo.semantic_demo demo/samples/valid.dnc
+python3 -m demo.lexer_demo demo/samples/valid.dnc
+python3 -m demo.semantic_demo demo/samples/valid.dnc
 ```
 
 El analizador léxico muestra los tokens, sus posiciones y el total, incluido

@@ -1,5 +1,5 @@
 int mondongo() {
-    int x = 5;
+    int x = true;
     int y = x + 2;
     {
         int z = x * 2;
@@ -7,4 +7,5 @@ int mondongo() {
         print(y);
     }
     print(y);
+    print(hola);
 }
