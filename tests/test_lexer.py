@@ -35,7 +35,7 @@ class LexerTests(unittest.TestCase):
         lexer = Lexer('')
         lexer.scan()
         self.assertEqual(lexer.get_all_tokens()[0].type, TokenType.EOF)
-        with self.assertRaisesRegex(ValueError, 'line 2, column 1'):
+        with self.assertRaisesRegex(ValueError, 'línea 2, columna 1'):
             Lexer('\n@').scan()
 
 

@@ -60,7 +60,7 @@ class Lexer:
         if char in SYMBOLS:
             self._consume()
             return Token(SYMBOLS[char], char, line, column)
-        raise ValueError(f"Unexpected character {char!r} at line {line}, column {column}")
+        raise ValueError(f"Carácter inesperado {char!r} en la línea {line}, columna {column}")
 
     def advance(self):
         """Scan and return the next token without storing it."""
